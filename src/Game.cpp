@@ -32,8 +32,11 @@ Game::play()
     checkMove();
 	if (::g_launch == true)
 		draw_ball();
-	else if (::g_launch == false)
-		init_ball();
+	else if (::g_launch == false) {
+        if (this->leap.checkLaunch())
+            ::g_launch = true;
+        init_ball();
+    }
 	glfwSwapBuffers(this->win);
 	glfwPollEvents();
 	return (0);

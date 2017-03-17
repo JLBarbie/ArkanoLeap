@@ -14,6 +14,7 @@ public:
     LeapControl();
     ~LeapControl();
     void getCoord();
+    bool checkLaunch();
 
 private:
     void connect();

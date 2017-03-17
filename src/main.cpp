@@ -38,7 +38,7 @@ int main(void)
 	Game *arkanoid = new Game();
 
 	glfwInit();
-	arkanoid->win = glfwCreateWindow(arkanoid->win_x, arkanoid->win_y, "Arkanoid", NULL, NULL);
+	arkanoid->win = glfwCreateWindow(arkanoid->win_x, arkanoid->win_y, "Arkanoid", nullptr, nullptr);
 	glfwMakeContextCurrent(arkanoid->win);
 	glfwSwapInterval(1);
 

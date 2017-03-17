@@ -5,6 +5,7 @@
 
 LeapControl::LeapControl() {
     this->controller = Leap::Controller();
+    this->controller.enableGesture(Leap::Gesture::TYPE_KEY_TAP);
     this->connect();
 }
 
@@ -42,6 +43,21 @@ LeapControl::getCoordY(Leap::Vector currentPosition) {
         y = 0;
 }
 
+bool
+LeapControl::checkLaunch() {
+    Leap::Frame frame = this->controller.frame(); // The latest frame
+    Leap::GestureList gestures = frame.gestures();
+    
+    for(Leap::GestureList::const_iterator gl = gestures.begin(); gl != frame.gestures().end(); gl++)
+    {
+        if ((*gl).type() == Leap::Gesture::TYPE_KEY_TAP) {
+            std::cout << "KeyTap" << std::endl;
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
 
 void
 LeapControl::connect() {

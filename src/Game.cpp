@@ -4,6 +4,14 @@
 #include <sstream>
 #include <array>
 
+/**
+ ** TODO: Repair draw_level
+ ** Abstract draw functions
+ ** Abstract Move
+ ** More levels
+ ** Fix Physic (Ball on pad + ball against brick)
+ */
+
 Game::Game() {
     // LeapControl this->leap();
     this->lives = 5;

@@ -119,8 +119,7 @@ Game::draw_player(void)
 }
 
 void
-Game::draw_ball()
-{
+Game::draw_ball() {
 	if (this->ball_y < 185 && this->directy == true)
 	{
 		if (this->ball_y + 1 == 185)
@@ -158,8 +157,7 @@ void Game::checkBallOnPad() {
 }
 
 void
-Game::init_ball()
-{
+Game::init_ball() {
 	this->directx = true;
 	this->directy = true;
 	this->ball_x = ::g_x * 100;
@@ -167,8 +165,7 @@ Game::init_ball()
 }
 
 void
-Game::get_level()
-{
+Game::get_level() {
 	std::fstream fs;
 	std::string lvl_name;
 
@@ -177,8 +174,7 @@ Game::get_level()
 }
 
 void
-Game::put_vertex(int x, int y, int value)
-{
+Game::put_vertex(int x, int y, int value) {
 	float	size;
 
 	glBegin(GL_QUADS);
@@ -194,8 +190,7 @@ Game::put_vertex(int x, int y, int value)
 }
 
 void
-Game::put_ball()
-{
+Game::put_ball() {
 	glBegin(GL_QUADS);
 	glColor3f(1, 1, 1);
 	glVertex2f(0.0f + ((float)this->ball_x * 0.01f),
@@ -210,8 +205,7 @@ Game::put_ball()
 }
 
 void
-Game::save_pos(int x, int y, float size)
-{
+Game::save_pos(int x, int y, float size) {
 	this->v1x = -1.0f + ((float)x * size / (this->win_x / 2)) + 0.005f;
 	this->v1y = 0.99f - (0.10 * y);
 	this->v2x = -1.0f + ((float)(x + 1) * size / (this->win_x / 2)) - 0.005f;
@@ -223,8 +217,7 @@ Game::save_pos(int x, int y, float size)
 }
 
 void
-Game::check_pad()
-{
+Game::check_pad() {
 	if (this->ball_y == 0)
 	{
 		if (((float)this->ball_x * 0.01) < ::g_x + 0.12 &&
@@ -245,8 +238,7 @@ Game::check_pad()
 }
 
 void
-Game::check_brick()
-{
+Game::check_brick() {
 	float	size;
     int x = 0;
     int y = 0;
@@ -272,8 +264,7 @@ Game::check_brick()
 }
 
 int
-Game::the_return_ofcheck_brick(int x, int y, float size)
-{
+Game::the_return_ofcheck_brick(int x, int y, float size) {
 	if (this->ball_y <= 185 && this->ball_y >= 180 - (y * 10))
 	{
 		if ((float)this->ball_x * 0.01 >= -1.0 + ((float)x * size /

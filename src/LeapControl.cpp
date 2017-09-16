@@ -4,9 +4,9 @@
 #define PRECISION 35
 
 LeapControl::LeapControl() {
-    this->controller = Leap::Controller();
-    this->controller.enableGesture(Leap::Gesture::TYPE_KEY_TAP);
-    this->connect();
+    controller = Leap::Controller();
+    controller.enableGesture(Leap::Gesture::TYPE_KEY_TAP);
+    connect();
 }
 
 LeapControl::~LeapControl() {
@@ -14,7 +14,7 @@ LeapControl::~LeapControl() {
 
 void
 LeapControl::getCoord() {
-    Leap::Frame frame = this->controller.frame(); // The latest frame
+    Leap::Frame frame = controller.frame(); // The latest frame
     Leap::Pointable pointable = frame.pointables().frontmost();
     Leap::Vector currentPosition = pointable.tipPosition();
 
@@ -45,7 +45,7 @@ LeapControl::getCoordY(Leap::Vector currentPosition) {
 
 bool
 LeapControl::checkLaunch() {
-    Leap::Frame frame = this->controller.frame(); // The latest frame
+    Leap::Frame frame = controller.frame(); // The latest frame
     Leap::GestureList gestures = frame.gestures();
     
     for(Leap::GestureList::const_iterator gl = gestures.begin(); gl != frame.gestures().end(); gl++)
@@ -62,10 +62,11 @@ LeapControl::checkLaunch() {
 void
 LeapControl::connect() {
     sleep(2);
-    if(this->controller.isConnected()) {
+    if(controller.isConnected()) {
         std::cout << "Connected" << std::endl;
+        connected = true;
     } else {
         std::cerr << "Leap Motion not connected" << std::endl;
-        exit(-1);
+        connected = false;
     }
 }

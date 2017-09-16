@@ -4,13 +4,15 @@ CMAKE_MINIMUM_REQUIRED (VERSION 3.0)
 SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 SET(CMAKE_VERBOSE_MAKEFILE FALSE)
 SET(CMAKE_INSTALL_PREFIX /usr/bin)
-SET(CMAKE_CXX_COMPILER_ID "GNU")
+SET(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
+set(CMAKE_C_COMPILER "gcc")
+#SET(CMAKE_CXX_COMPILER_ID "GNU")
 # SET (SHAREDLIB_DIR "${PROJECT_SOURCE_DIR}/shared")
 
 SET_PROPERTY(GLOBAL PROPERTY USE_FOLDERS ON)
 
 # Main project name
-PROJECT (arkanoLeap)
+PROJECT(arkanoleap)
 
 INCLUDE (Colors)
 
@@ -57,6 +59,10 @@ target_link_libraries (arkanoleap
     glut
     Leap
 )
+
+add_custom_command(TARGET arkanoleap PRE_BUILD
+                   COMMAND ${CMAKE_COMMAND} -E copy_directory
+                       ${CMAKE_SOURCE_DIR}/levels $<TARGET_FILE_DIR:arkanoleap>/levels)
 
 set_property(TARGET arkanoleap PROPERTY FOLDER "executables")
 

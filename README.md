@@ -9,4 +9,6 @@ $ make
 $ ./arkanoleap
 '''
 
-
+TODO
+- [ ] Controle sans leap motion
+- [ ] Afficher toute les briques

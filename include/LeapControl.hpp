@@ -9,6 +9,7 @@ public:
     Leap::Controller controller;
     double x;
     double y;
+    bool connected;
 
 public:
     LeapControl();

@@ -47,7 +47,7 @@ bool
 LeapControl::checkLaunch() {
     Leap::Frame frame = controller.frame(); // The latest frame
     Leap::GestureList gestures = frame.gestures();
-    
+
     for(Leap::GestureList::const_iterator gl = gestures.begin(); gl != frame.gestures().end(); gl++)
     {
         if ((*gl).type() == Leap::Gesture::TYPE_KEY_TAP) {
@@ -57,6 +57,7 @@ LeapControl::checkLaunch() {
             return false;
         }
     }
+    return false;
 }
 
 void

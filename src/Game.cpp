@@ -258,7 +258,7 @@ Game::the_return_ofcheck_brick(int x, int y, float size) {
                 (float)ball_x * 0.01 <= -1.0 + ((float)(x + 1) *
                     size / (win_x / 2)) - 0.005)
 		{
-            directy *= -1;
+            directy = -directy;
             if (level[y][x] == '0')
                 level[y][x] = ' ';
             else if (level[y][x] == '1')

@@ -10,5 +10,8 @@ $ ./arkanoleap
 '''
 
 TODO
-- [ ] Controle sans leap motion
-- [ ] Afficher toute les briques
+- [x] Controle sans leap motion
+- [x] Afficher toute les briques
+- [ ] Vérifier la colision
+- [ ] Gérer les déplacement en plus aléatoire
+
